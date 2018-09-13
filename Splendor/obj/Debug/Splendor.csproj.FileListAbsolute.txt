@@ -1,0 +1,14 @@
+C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\bin\Debug\Splendor.exe.config
+C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\bin\Debug\Splendor.exe
+C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\bin\Debug\Splendor.pdb
+C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\bin\Debug\System.Data.SQLite.dll
+C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\bin\Debug\System.Data.SQLite.xml
+C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\obj\Debug\Splendor.csprojAssemblyReference.cache
+C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\obj\Debug\Splendor.frmSplendor.resources
+C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\obj\Debug\Splendor.Properties.Resources.resources
+C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\obj\Debug\Splendor.csproj.GenerateResource.cache
+C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\obj\Debug\Splendor.csproj.CoreCompileInputs.cache
+C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\obj\Debug\Splendor.csproj.CopyComplete
+C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\obj\Debug\Splendor.exe
+C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\obj\Debug\Splendor.pdb
