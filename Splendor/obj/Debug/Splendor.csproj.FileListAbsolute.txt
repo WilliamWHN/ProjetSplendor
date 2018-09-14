@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\bin\Debug\Splendor.exe.config
 C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\bin\Debug\Splendor.exe
 C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\bin\Debug\Splendor.pdb
@@ -12,3 +13,6 @@ C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\obj\Debug\Splendor.csp
 C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\obj\Debug\Splendor.csproj.CopyComplete
 C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\obj\Debug\Splendor.exe
 C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\obj\Debug\Splendor.pdb
+=======
+C:\ProjetSplendor\Splendor\obj\Debug\Splendor.csprojAssemblyReference.cache
+>>>>>>> Stashed changes
