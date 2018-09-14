@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\bin\Debug\Splendor.exe.config
 C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\bin\Debug\Splendor.exe
 C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\bin\Debug\Splendor.pdb
@@ -13,6 +12,17 @@ C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\obj\Debug\Splendor.csp
 C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\obj\Debug\Splendor.csproj.CopyComplete
 C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\obj\Debug\Splendor.exe
 C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\obj\Debug\Splendor.pdb
-=======
+C:\ProjetSplendor\Splendor\bin\Debug\Splendor.exe.config
+C:\ProjetSplendor\Splendor\bin\Debug\Splendor.exe
+C:\ProjetSplendor\Splendor\bin\Debug\Splendor.pdb
+C:\ProjetSplendor\Splendor\bin\Debug\System.Data.SQLite.dll
+C:\ProjetSplendor\Splendor\bin\Debug\System.Data.SQLite.xml
+C:\ProjetSplendor\Splendor\bin\Debug\System.Data.SQLite.dll.config
 C:\ProjetSplendor\Splendor\obj\Debug\Splendor.csprojAssemblyReference.cache
->>>>>>> Stashed changes
+C:\ProjetSplendor\Splendor\obj\Debug\Splendor.frmSplendor.resources
+C:\ProjetSplendor\Splendor\obj\Debug\Splendor.Properties.Resources.resources
+C:\ProjetSplendor\Splendor\obj\Debug\Splendor.csproj.GenerateResource.cache
+C:\ProjetSplendor\Splendor\obj\Debug\Splendor.csproj.CoreCompileInputs.cache
+C:\ProjetSplendor\Splendor\obj\Debug\Splendor.csproj.CopyComplete
+C:\ProjetSplendor\Splendor\obj\Debug\Splendor.exe
+C:\ProjetSplendor\Splendor\obj\Debug\Splendor.pdb

@@ -21,18 +21,20 @@ namespace Splendor
         /// </summary>
         public ConnectionDB()
         {
-
+            // Création de la BD (j'imagine ...)
             SQLiteConnection.CreateFile("Splendor.sqlite");
             
+            // Instanciation de la connexion à la base de donnée
             m_dbConnection = new SQLiteConnection("Data Source=Splendor.sqlite;Version=3;");
+            // Ouverture de la BD (j'imagine ...)
             m_dbConnection.Open();
 
-            //create and insert players
+            //create and insert players VOIR EN DESSOUS
             CreateInsertPlayer();
-            //Create and insert cards
+            //Create and insert cards VOIR EN DESSOUS
             //TO DO
             CreateInsertCards();
-            //Create and insert ressources
+            //Create and insert ressources VOIR EN DESSOUS
             //TO DO
             CreateInsertRessources();
         }
@@ -73,10 +75,12 @@ namespace Splendor
         /// </summary>
         private void CreateInsertPlayer()
         {
+            // Création de la table "player"
             string sql = "CREATE TABLE player (id INT PRIMARY KEY, pseudo VARCHAR(20))";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
 
+            // Insertion des données
             sql = "insert into player (id, pseudo) values (0, 'Fred')";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
@@ -112,15 +116,45 @@ namespace Splendor
         /// </summary>
         private void CreateInsertRessources()
         {
-            //TO DO
+            // Création de la table "ressource"
+            string sql = "CREATE TABLE ressoure (id INT PRIMARY KEY)";
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            command.ExecuteNonQuery();
+
+            // Insertion des données
+            sql = "insert into ressource (id) values (0)"; // -> Rubis
+            command = new SQLiteCommand(sql, m_dbConnection);
+            command.ExecuteNonQuery();
+            sql = "insert into ressource (id) values (1)"; // -> Emeraude
+            command = new SQLiteCommand(sql, m_dbConnection);
+            command.ExecuteNonQuery();
+            sql = "insert into ressource (id) values (2)"; // -> Onyx
+            command = new SQLiteCommand(sql, m_dbConnection);
+            command.ExecuteNonQuery();
+            sql = "insert into ressource (id) values (3)"; // -> Saphir
+            command = new SQLiteCommand(sql, m_dbConnection);
+            command.ExecuteNonQuery();
+            sql = "insert into ressource (id) values (4)"; // -> Diamand
+            command = new SQLiteCommand(sql, m_dbConnection);
+            command.ExecuteNonQuery();
         }
 
         /// <summary>
         ///  create tables "cards", "cost" and insert data
         /// </summary>
         private void CreateInsertCards()
-        {
-           //TO DO
+        { 
+            // Création de la table "cards"
+            string sql = "CREATE TABLE card (id INT PRIMARY KEY, level INT, nbPtPrestige INT, fkPlayer INT, FOREIGN KEY (fkPlayer) REFERENCES player (id))";
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            command.ExecuteNonQuery();
+
+            // Création de la table "cost"
+            sql = "CREATE TABLE cost (fkCard INT, fkRessource INT, nbRessource INT, FOREIGN KEY (fkCard) REFERENCES card (id), FOREIGN KEY (fkRessource) REFERENCES ressource (id))";
+            SQLiteCommand command2 = new SQLiteCommand(sql, m_dbConnection);
+            command2.ExecuteNonQuery();
+
+            // Insertion des données -> utiliser le fichier Excel
         }
 
     }

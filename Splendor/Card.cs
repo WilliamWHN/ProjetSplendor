@@ -118,13 +118,7 @@ namespace Splendor
             return res;
         }
 
-        /// <summary>
-        /// create and insert a card
-        /// </summary>
-        public int CreateInsertCards()
-        {
-            return 0;
-        }
+
 
 
     }
