@@ -26,3 +26,17 @@ C:\ProjetSplendor\Splendor\obj\Debug\Splendor.csproj.CoreCompileInputs.cache
 C:\ProjetSplendor\Splendor\obj\Debug\Splendor.csproj.CopyComplete
 C:\ProjetSplendor\Splendor\obj\Debug\Splendor.exe
 C:\ProjetSplendor\Splendor\obj\Debug\Splendor.pdb
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\obj\Debug\Splendor.csprojAssemblyReference.cache
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\obj\Debug\Splendor.frmSplendor.resources
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\obj\Debug\Splendor.Properties.Resources.resources
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\obj\Debug\Splendor.csproj.GenerateResource.cache
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\obj\Debug\Splendor.csproj.CoreCompileInputs.cache
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\obj\Debug\Splendor.exe
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\obj\Debug\Splendor.pdb
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\bin\Debug\Splendor.exe.config
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\bin\Debug\Splendor.exe
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\bin\Debug\Splendor.pdb
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\bin\Debug\System.Data.SQLite.dll
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\bin\Debug\System.Data.SQLite.xml
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\bin\Debug\System.Data.SQLite.dll.config
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\obj\Debug\Splendor.csproj.CopyComplete
