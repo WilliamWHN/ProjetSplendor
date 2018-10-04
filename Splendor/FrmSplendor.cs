@@ -18,6 +18,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic;
 using System.Windows.Forms;
 
 namespace Splendor
@@ -33,6 +34,7 @@ namespace Splendor
         private int nbEmeraude;
         private int nbDiamand;
         private int nbSaphir;
+        private string NewPlayerName;
         private int NbTotalCoins;
 
         //used to store the number of coins there is on table
@@ -45,12 +47,12 @@ namespace Splendor
         //id of the player that is playing
         private int currentPlayerId;
         //boolean to enable us to know if the user can click on a coin or a card
-        private bool enableClicLabel = true;
-        private bool enableClicOnRubis = true;
-        private bool enableClicOnOnyx = true;
-        private bool enableClicOnEmeraude = true;
-        private bool enableClicOnDiamand = true;
-        private bool enableClicOnSaphir = true;
+        private bool enableClicLabel = false;
+        private bool enableClicOnRubis = false;
+        private bool enableClicOnOnyx = false;
+        private bool enableClicOnEmeraude = false;
+        private bool enableClicOnDiamand = false;
+        private bool enableClicOnSaphir = false;
         //connection to the database
         private ConnectionDB conn;
 
@@ -109,8 +111,12 @@ namespace Splendor
 
             this.Width = 680;
             this.Height = 540;
-      
 
+            lblDiamandCoin.Visible = false;
+            lblEmeraudeCoin.Visible = false;
+            lblOnyxCoin.Visible = false;
+            lblSaphirCoin.Visible = false;
+            lblRubisCoin.Visible = false;
             lblChoiceDiamand.Visible = false;
             lblChoiceOnyx.Visible = false;
             lblChoiceRubis.Visible = false;
@@ -139,8 +145,7 @@ namespace Splendor
         private void cmdPlay_Click(object sender, EventArgs e)
         {
             this.Width = 680;
-            this.Height = 780;
-
+            this.Height = 780;      
             int id = 0;
            
             LoadPlayer(id);
@@ -178,6 +183,13 @@ namespace Splendor
             player.Ressources = new int[] { 2, 0, 1, 1, 1 };
             player.Coins = new int[] { 0, 1, 0, 1, 1 };
 
+            //Put visible the coins
+            lblDiamandCoin.Visible = true;
+            lblEmeraudeCoin.Visible = true;
+            lblOnyxCoin.Visible = true;
+            lblSaphirCoin.Visible = true;
+            lblRubisCoin.Visible = true;
+
             lblPlayerDiamandCoin.Text = player.Coins[0].ToString();
             lblPlayerOnyxCoin.Text = player.Coins[1].ToString();
             lblPlayerRubisCoin.Text = player.Coins[2].ToString();
@@ -188,6 +200,7 @@ namespace Splendor
             lblPlayer.Text = "Jeu de " + name;
 
             cmdPlay.Enabled = false;
+            cmdInsertPlayer.Enabled = false;
         }
 
         /// <summary>
@@ -196,13 +209,22 @@ namespace Splendor
         private void ControlCoinOnHand()
         {
             NbTotalCoins = nbRubis + nbDiamand + nbEmeraude + nbOnyx + nbSaphir;
-            if (NbTotalCoins == 2)
+            if (NbTotalCoins == 0)
+            {
+                enableClicLabel = true;
+                enableClicOnRubis = true;
+                enableClicOnSaphir = true;
+                enableClicOnEmeraude = true;
+                enableClicOnDiamand = true;
+                enableClicOnOnyx = true;
+            }
+            else if (NbTotalCoins == 2)
             {
                 if (nbRubis == 2 || nbSaphir == 2 || nbEmeraude == 2 || nbOnyx == 2 || nbDiamand == 2)
                 {
                     enableClicLabel = false;                  
                 }
-                ///On test ici les combinaisons avec disponibles avec Rubis
+                ///On test ici les combinaisons  disponibles avec Rubis
                 else if(nbRubis == 1 && nbSaphir == 1)
                 {
                     enableClicOnRubis = false;
@@ -223,7 +245,7 @@ namespace Splendor
                     enableClicOnRubis = false;
                     enableClicOnOnyx = false;
                 }
-                //On test ici les combinaisons avec disponibles avec Saphir
+                //On test ici les combinaisons disponibles avec Saphir
                 else if (nbSaphir == 1 && nbDiamand == 1)
                 {
                     enableClicOnSaphir = false;
@@ -239,7 +261,7 @@ namespace Splendor
                     enableClicOnSaphir = false;
                     enableClicOnOnyx = false;
                 }
-                //On test ici les combinaisons avec disponibles avec Diamand
+                //On test ici les combinaisons  disponibles avec Diamand
                 else if (nbDiamand == 1 && nbEmeraude == 1)
                 {
                     enableClicOnDiamand = false;
@@ -250,7 +272,7 @@ namespace Splendor
                     enableClicOnRubis = false;
                     enableClicOnOnyx = false;
                 }
-                //On test ici les combinaisons avec disponibles avec Emeraude
+                //On test ici les combinaisons  disponibles avec Emeraude
                 else if (nbEmeraude == 1 && nbOnyx == 1)
                 {
                     enableClicOnEmeraude = false;
@@ -279,7 +301,6 @@ namespace Splendor
             {              
                 cmdValidateChoice.Visible = true;
                 lblChoiceRubis.Visible = true;
-                //TO DO check if possible to choose a coin, update the number of available coin
                 NbRubisAvailable = NbRubisAvailable - 1;
                 lblRubisCoin.Text = NbRubisAvailable + "" ;
                 nbRubis++;
@@ -303,9 +324,8 @@ namespace Splendor
             {
                 cmdValidateChoice.Visible = true;
                 lblChoiceSaphir.Visible = true;
-                //TO DO check if possible to choose a coin, update the number of available coin
-                NbRubisAvailable = NbSaphirAvailable - 1;
-                lblRubisCoin.Text = NbSaphirAvailable + "";
+                NbSaphirAvailable = NbSaphirAvailable - 1;
+                lblSaphirCoin.Text = NbSaphirAvailable + "";
                 nbSaphir++;
                 lblChoiceSaphir.Text = nbSaphir + "\r\n";
             }
@@ -328,7 +348,6 @@ namespace Splendor
             {
                 cmdValidateChoice.Visible = true;
                 lblChoiceOnyx.Visible = true;
-                //TO DO check if possible to choose a coin, update the number of available coin
                 NbOnyxAvailable = NbOnyxAvailable - 1;
                 lblOnyxCoin.Text = NbOnyxAvailable + "";
                 nbOnyx++;
@@ -353,7 +372,6 @@ namespace Splendor
             {
                 cmdValidateChoice.Visible = true;
                 lblChoiceEmeraude.Visible = true;
-                //TO DO check if possible to choose a coin, update the number of available coin
                 NbEmeraudeAvailable = NbEmeraudeAvailable - 1;
                 lblEmeraudeCoin.Text = NbEmeraudeAvailable + "";
                 nbEmeraude++;
@@ -379,7 +397,6 @@ namespace Splendor
             {
                 cmdValidateChoice.Visible = true;
                 lblChoiceDiamand.Visible = true;
-                //TO DO check if possible to choose a coin, update the number of available coin
                 NbDiamandAvailable = NbDiamandAvailable - 1;
                 lblDiamandCoin.Text = NbDiamandAvailable + "";
                 nbDiamand++;
@@ -407,9 +424,9 @@ namespace Splendor
         /// <param name="e"></param>
         private void cmdInsertPlayer_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("A implémenter");
+            NewPlayerName = Interaction.InputBox("Veuiller entrer le nom du joueur", "Entrer un joueur", "prénom", 500, 500);     
         }
-
+        
         /// <summary>
         /// click on the next player to tell him it is his turn
         /// </summary>
@@ -424,9 +441,64 @@ namespace Splendor
             
         }
 
-        private void lblPlayerEmeraudeCoin_Click(object sender, EventArgs e)
+        private void lblChoiceRubis_Click(object sender, EventArgs e)
         {
+            if (nbRubis == 1)
+            {
+                lblChoiceRubis.Visible = false;
+            }
+            NbRubisAvailable = NbRubisAvailable + 1;
+            lblRubisCoin.Text = NbRubisAvailable + "";
+            nbRubis--;
+            lblChoiceRubis.Text = nbRubis + "\r\n";           
+        }
 
+        private void lblChoiceSaphir_Click(object sender, EventArgs e)
+        {
+            if (nbSaphir == 1)
+            {
+                lblChoiceSaphir.Visible = false;
+            }
+            NbSaphirAvailable = NbSaphirAvailable + 1;
+            lblSaphirCoin.Text = NbSaphirAvailable + "";
+            nbSaphir--;
+            lblChoiceSaphir.Text = nbSaphir + "\r\n";
+        }
+
+        private void lblChoiceOnyx_Click(object sender, EventArgs e)
+        {
+            if (nbOnyx == 1)
+            {
+                lblChoiceOnyx.Visible = false;
+            }
+            NbOnyxAvailable = NbOnyxAvailable + 1;
+            lblOnyxCoin.Text = NbOnyxAvailable + "";
+            nbOnyx--;
+            lblChoiceOnyx.Text = nbOnyx + "\r\n";
+        }
+
+        private void lblChoiceEmeraude_Click(object sender, EventArgs e)
+        {
+            if (nbEmeraude == 1)
+            {
+                lblChoiceEmeraude.Visible = false;
+            }
+            NbEmeraudeAvailable = NbEmeraudeAvailable + 1;
+            lblEmeraudeCoin.Text = NbEmeraudeAvailable + "";
+            nbEmeraude--;
+            lblChoiceEmeraude.Text = nbEmeraude + "\r\n";
+        }
+
+        private void lblChoiceDiamand_Click(object sender, EventArgs e)
+        {
+            if (nbDiamand == 1)
+            {
+                lblChoiceDiamand.Visible = false;
+            }
+            NbDiamandAvailable = NbDiamandAvailable + 1;
+            lblDiamandCoin.Text = NbDiamandAvailable + "";
+            nbDiamand--;
+            lblChoiceDiamand.Text = nbDiamand + "\r\n";
         }
     }
 }
