@@ -354,7 +354,6 @@
             this.lblPlayerEmeraudeCoin.Size = new System.Drawing.Size(76, 13);
             this.lblPlayerEmeraudeCoin.TabIndex = 25;
             this.lblPlayerEmeraudeCoin.Text = "EmeraudeCoin";
-            this.lblPlayerEmeraudeCoin.Click += new System.EventHandler(this.lblPlayerEmeraudeCoin_Click);
             // 
             // lblPlayerOnyxCoin
             // 
@@ -434,6 +433,7 @@
             this.lblChoiceRubis.Size = new System.Drawing.Size(57, 13);
             this.lblChoiceRubis.TabIndex = 33;
             this.lblChoiceRubis.Text = "choix rubis";
+            this.lblChoiceRubis.Click += new System.EventHandler(this.lblChoiceRubis_Click);
             // 
             // lblChoiceSaphir
             // 
@@ -446,6 +446,7 @@
             this.lblChoiceSaphir.Size = new System.Drawing.Size(63, 13);
             this.lblChoiceSaphir.TabIndex = 34;
             this.lblChoiceSaphir.Text = "choix saphir";
+            this.lblChoiceSaphir.Click += new System.EventHandler(this.lblChoiceSaphir_Click);
             // 
             // lblChoiceOnyx
             // 
@@ -458,6 +459,7 @@
             this.lblChoiceOnyx.Size = new System.Drawing.Size(57, 13);
             this.lblChoiceOnyx.TabIndex = 35;
             this.lblChoiceOnyx.Text = "choix onyx";
+            this.lblChoiceOnyx.Click += new System.EventHandler(this.lblChoiceOnyx_Click);
             // 
             // lblChoiceEmeraude
             // 
@@ -470,6 +472,7 @@
             this.lblChoiceEmeraude.Size = new System.Drawing.Size(82, 13);
             this.lblChoiceEmeraude.TabIndex = 36;
             this.lblChoiceEmeraude.Text = "choix émeraude";
+            this.lblChoiceEmeraude.Click += new System.EventHandler(this.lblChoiceEmeraude_Click);
             // 
             // lblChoiceDiamand
             // 
@@ -482,6 +485,7 @@
             this.lblChoiceDiamand.Size = new System.Drawing.Size(75, 13);
             this.lblChoiceDiamand.TabIndex = 37;
             this.lblChoiceDiamand.Text = "choix diamand";
+            this.lblChoiceDiamand.Click += new System.EventHandler(this.lblChoiceDiamand_Click);
             // 
             // cmdValidateChoice
             // 
