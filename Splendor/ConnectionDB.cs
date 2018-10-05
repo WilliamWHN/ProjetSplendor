@@ -51,22 +51,36 @@ namespace Splendor
             //TO DO
             //Create an object "Stack of Card"
             Stack<Card> listCard = new Stack<Card>();
+
             //do while to go to every record of the card table
             //while (....)
             //{
-                //Get the ressourceid and the number of prestige points
-                //Create a card object
-                
-                //select the cost of the card : look at the cost table (and other)
-                
-                //do while to go to every record of the card table
-                //while (....)
-                //{
-                    //get the nbRessource of the cost
-                //}
-                //push card into the stack
-                
+            //Get the ressourceid and the number of prestige points
+            //Create a card object
+
+            //select the cost of the card : look at the cost table (and other)
+
+            //do while to go to every record of the card table
+            //while (....)
+            //{
+            //get the nbRessource of the cost
             //}
+            //push card into the stack
+
+            //}
+
+            int i = 2;
+            do
+            {
+                int idCard = i;
+
+                // Get the number of prestige ppints and the level of the card
+                int nbPrestigepoints = nbPrestige(idCard);
+                int cardLevel = getLevel(idCard);
+
+
+                idCard++;
+            } while (i < 102);
             return listCard;
         }
 
@@ -139,6 +153,23 @@ namespace Splendor
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
         }
+
+        /// <summary>
+        /// get the ressource according to is id
+        /// <param ressource="id">id of the ressource</param>
+        /// </summary>
+        /*public string GetRessourceId(int id)
+        {
+            string sql = "select name from ressource where id =" + id;
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+            string ressource = "";
+            while(reader.Read())
+            {
+                ressource = reader["name"].ToString();
+            }
+            return ressource;
+        }*/
 
         /// <summary>
         ///  create tables "cards", "cost" and insert data
@@ -968,7 +999,46 @@ namespace Splendor
             sql = "insert into cost (fkCard, fkRessource, nbRessource) values (499, 5, 2)"; command2 = new SQLiteCommand(sql, m_dbConnection); command2.ExecuteNonQuery();
             sql = "insert into cost (fkCard, fkRessource, nbRessource) values (500, 5, 1)"; command2 = new SQLiteCommand(sql, m_dbConnection); command2.ExecuteNonQuery();
             sql = "insert into cost (fkCard, fkRessource, nbRessource) values (501, 5, 0)"; command2 = new SQLiteCommand(sql, m_dbConnection); command2.ExecuteNonQuery();
+        }
 
+        /*public string costRubis(int idCard)
+        {
+            string sql = "select "
+
+            int rubis;
+            return rubis;
+        }*/
+
+        /// <summary>
+        /// Get the number of prestige point for one card
+        /// </summary>
+        public int nbPrestige(int idCard)
+        {
+            // Write Sql request
+            string sql = "select nbPtPrestige from card where id =" + idCard;
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            // Write the result in nbPoints   pas au point
+            int nbPoints;
+            nbPoints = Convert.ToInt32(reader["nbPtPrestige"]);
+            return nbPoints;
+        }
+
+        /// <summary>
+        /// /Get the level of the card
+        /// </summary>
+        public int getLevel(int idCard)
+        {
+            // Write sql request
+            string sql = "select level from card where id =" + idCard;
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            // Write the result in cardLevel
+            int cardLevel;
+            cardLevel = Convert.ToInt32(reader);
+            return cardLevel;
         }
 
         /// <summary>
