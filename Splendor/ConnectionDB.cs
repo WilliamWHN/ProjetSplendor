@@ -74,10 +74,28 @@ namespace Splendor
             {
                 int idCard = i;
 
-                // Get the number of prestige ppints and the level of the card
+                // Get the number of prestige points and the level of the card
                 int nbPrestigepoints = nbPrestige(idCard);
                 int cardLevel = getLevel(idCard);
 
+                /*// Get the data of the card table
+                string allCards = getCard();*/
+
+                // Get the cost of the ressource
+                int costRubis = requestCostRubis(idCard);
+                int costEmeraude = requestCostEmeraude(idCard);
+                int costOnyx = requestCostOnyx(idCard);
+                int costSaphir = requestCostSaphir(idCard);
+                int costDiamand = requestCostDiamand(idCard);
+
+                // Create a card object and fills it
+                Card card = new Card();
+                card.PrestigePt = nbPrestigepoints;
+                card.Level = cardLevel;
+
+                int carteTest = 2;
+
+                listCard.Push();
 
                 idCard++;
             } while (i < 102);
@@ -1001,13 +1019,81 @@ namespace Splendor
             sql = "insert into cost (fkCard, fkRessource, nbRessource) values (501, 5, 0)"; command2 = new SQLiteCommand(sql, m_dbConnection); command2.ExecuteNonQuery();
         }
 
-        /*public string costRubis(int idCard)
+        /// <summary>
+        /// Get the "Rubis" card's cost
+        /// </summary>
+        public int requestCostRubis(int idCard)
         {
-            string sql = "select "
+            // Write Sql request
+            string sql = "select nbRessource from cost where fkRessource = 1 and fkCard =" + idCard;
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
 
-            int rubis;
-            return rubis;
-        }*/
+            int costRubis = Convert.ToInt32(reader["nbRessource"]);
+            return costRubis;
+        }
+
+        /// <summary>
+        /// Get the "Emeraude" card's cost
+        /// </summary>
+        public int requestCostEmeraude(int idCard)
+        {
+            idCard = idCard + 100;
+            // Write Sql request
+            string sql = "select nbRessource from cost where fkRessource = 2 and fkCard =" + idCard;
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            int costEmeraude = Convert.ToInt32(reader["nbRessource"]);
+            return costEmeraude;
+        }
+
+        /// <summary>
+        /// Get the "Onyx" card's cost
+        /// </summary>
+        public int requestCostOnyx(int idCard)
+        {
+            idCard = idCard + 200;
+            // Write Sql request
+            string sql = "select nbRessource from cost where fkRessource = 3 and fkCard =" + idCard;
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            int costOnyx = Convert.ToInt32(reader["nbRessource"]);
+            return costOnyx;
+        }
+
+        /// <summary>
+        /// Get the "Saphir" card's cost
+        /// </summary>
+        public int requestCostSaphir(int idCard)
+        {
+            idCard = idCard + 300;
+
+            // Write Sql request
+            string sql = "select nbRessource from cost where fkRessource = 4 and fkCard =" + idCard;
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            int costSaphir = Convert.ToInt32(reader["nbRessource"]);
+            return costSaphir;
+        }
+
+        /// <summary>
+        /// Get the "Diamand" card's cost
+        /// </summary>
+        public int requestCostDiamand(int idCard)
+        {
+            idCard = idCard + 400;
+
+            // Write Sql request
+            string sql = "select nbRessource from cost where fkRessource = 5 and fkCard =" + idCard;
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            int costDiamand = Convert.ToInt32(reader["nbRessource"]);
+            return costDiamand;
+        }
 
         /// <summary>
         /// Get the number of prestige point for one card
@@ -1037,9 +1123,23 @@ namespace Splendor
 
             // Write the result in cardLevel
             int cardLevel;
-            cardLevel = Convert.ToInt32(reader);
+            cardLevel = Convert.ToInt32(reader["level"]);
             return cardLevel;
         }
+
+        /*/// <summary>
+        /// Get all the data of the Card table
+        /// </summary>
+        public string getCard()
+        {
+            // Write Sql request
+            string sql = "select * from card";
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            string allCard = Convert.ToString(reader);
+            return allCard;
+        }*/
 
         /// <summary>
         ///  create table "nbCoin" and insert data             
