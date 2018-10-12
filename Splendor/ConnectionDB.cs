@@ -23,14 +23,15 @@ namespace Splendor
         {
             // Création de la BD (j'imagine ...)
             SQLiteConnection.CreateFile("Splendor.sqlite");
-            
+
             // Instanciation de la connexion à la base de donnée
             m_dbConnection = new SQLiteConnection("Data Source=Splendor.sqlite;Version=3;");
-            // Ouverture de la BD (j'imagine ...)
+
+            // Ouverture de la BD (j'imagine ...)        
             m_dbConnection.Open();
 
-            //create and insert players VOIR EN DESSOUS
-            CreateInsertPlayer();
+            //Create Table player
+            CreateTablePlayer();
             //Create and insert cards VOIR EN DESSOUS
             // TO DO 50%
             CreateInsertCards();
@@ -70,29 +71,29 @@ namespace Splendor
             return listCard;
         }
 
-
         /// <summary>
-        /// create the "player" table and insert data
+        /// create the "player" table
         /// </summary>
-        private void CreateInsertPlayer()
+        public void CreateTablePlayer()
         {
             // Création de la table "player"
-            string sql = "CREATE TABLE player (id INT PRIMARY KEY, pseudo VARCHAR(20))";
+            string sql = "CREATE TABLE player (id INTEGER PRIMARY KEY, pseudo VARCHAR(20))";
             SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
-            command.ExecuteNonQuery();
-
-            // Insertion des données
-            sql = "insert into player (id, pseudo) values (0, 'Fred')";
-            command = new SQLiteCommand(sql, m_dbConnection);
-            command.ExecuteNonQuery();
-            sql = "insert into player (id, pseudo) values (1, 'Harry')";
-            command = new SQLiteCommand(sql, m_dbConnection);
-            command.ExecuteNonQuery();
-            sql = "insert into player (id, pseudo) values (2, 'Sam')";
-            command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
         }
 
+        /// <summary>
+        /// insert data in payer table
+        /// </summary>
+        public string CreateInsertPlayer(string name)
+        {
+            // Insertion des données
+            string sql = "insert into player (pseudo) values ('" + name + "')";
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            command.ExecuteNonQuery();
+
+            return "true";
+        }
         
         /// <summary>
         /// get the name of the player according to his id
