@@ -40,4 +40,8 @@ P:\MA\MA24\Splendor\ProjetSplendor\Splendor\bin\Debug\System.Data.SQLite.dll
 P:\MA\MA24\Splendor\ProjetSplendor\Splendor\bin\Debug\System.Data.SQLite.xml
 P:\MA\MA24\Splendor\ProjetSplendor\Splendor\bin\Debug\System.Data.SQLite.dll.config
 P:\MA\MA24\Splendor\ProjetSplendor\Splendor\obj\Debug\Splendor.csproj.CopyComplete
+<<<<<<< HEAD
 C:\Users\william.hausmann\Desktop\ProjetSplendor\Splendor\obj\Debug\Splendor.csproj.ResolveComReference.cache
+=======
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\obj\Debug\Splendor.csproj.ResolveComReference.cache
+>>>>>>> Carte

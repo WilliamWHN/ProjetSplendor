@@ -52,22 +52,54 @@ namespace Splendor
             //TO DO
             //Create an object "Stack of Card"
             Stack<Card> listCard = new Stack<Card>();
+
             //do while to go to every record of the card table
             //while (....)
             //{
-                //Get the ressourceid and the number of prestige points
-                //Create a card object
-                
-                //select the cost of the card : look at the cost table (and other)
-                
-                //do while to go to every record of the card table
-                //while (....)
-                //{
-                    //get the nbRessource of the cost
-                //}
-                //push card into the stack
-                
+            //Get the ressourceid and the number of prestige points
+            //Create a card object
+
+            //select the cost of the card : look at the cost table (and other)
+
+            //do while to go to every record of the card table
+            //while (....)
+            //{
+            //get the nbRessource of the cost
             //}
+            //push card into the stack
+
+            //}
+
+            int i = 2;
+            do
+            {
+                int idCard = i;
+
+                // Get the number of prestige points and the level of the card
+                int nbPrestigepoints = nbPrestige(idCard);
+                int cardLevel = getLevel(idCard);
+
+                /*// Get the data of the card table
+                string allCards = getCard();*/
+
+                // Get the cost of the ressource
+                int costRubis = requestCostRubis(idCard);
+                int costEmeraude = requestCostEmeraude(idCard);
+                int costOnyx = requestCostOnyx(idCard);
+                int costSaphir = requestCostSaphir(idCard);
+                int costDiamand = requestCostDiamand(idCard);
+
+                // Create a card object and fills it
+                Card card = new Card();
+                card.PrestigePt = nbPrestigepoints;
+                card.Level = cardLevel;
+
+                int carteTest = 2;
+
+                //listCard.Push();
+
+                idCard++;
+            } while (i < 102);
             return listCard;
         }
 
@@ -142,6 +174,23 @@ namespace Splendor
         }
 
         /// <summary>
+        /// get the ressource according to is id
+        /// <param ressource="id">id of the ressource</param>
+        /// </summary>
+        /*public string GetRessourceId(int id)
+        {
+            string sql = "select name from ressource where id =" + id;
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+            string ressource = "";
+            while(reader.Read())
+            {
+                ressource = reader["name"].ToString();
+            }
+            return ressource;
+        }*/
+
+        /// <summary>
         ///  create tables "cards", "cost" and insert data
         /// </summary>
         private void CreateInsertCards()
@@ -152,304 +201,304 @@ namespace Splendor
             command.ExecuteNonQuery();
 
             // Insertion des données -> utiliser le fichier Excel
-            sql = "insert into card(id, level, nbPtPrestige) values(2, 4, 3)";
-            command = new SQLiteCommand(sql, m_dbConnection);
+            sql = "insert into card (id, level, nbPtPrestige) values(2, 4, 3)";
+           command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(3, 4, 3)";
+            sql = "insert into card (id, level, nbPtPrestige) values(3, 4, 3)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(4, 4, 3)";
+            sql = "insert into card (id, level, nbPtPrestige) values(4, 4, 3)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(5, 4, 3)";
+            sql = "insert into card (id, level, nbPtPrestige) values(5, 4, 3)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(6, 4, 3)";
+            sql = "insert into card (id, level, nbPtPrestige) values(6, 4, 3)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(7, 4, 3)";
+            sql = "insert into card (id, level, nbPtPrestige) values(7, 4, 3)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(8, 4, 3)";
+            sql = "insert into card (id, level, nbPtPrestige) values(8, 4, 3)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(9, 4, 3)";
+            sql = "insert into card (id, level, nbPtPrestige) values(9, 4, 3)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(10, 4, 3)";
+            sql = "insert into card (id, level, nbPtPrestige) values(10, 4, 3)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(11, 4, 3)";
+            sql = "insert into card (id, level, nbPtPrestige) values(11, 4, 3)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(12, 3, 5)";
+            sql = "insert into card (id, level, nbPtPrestige) values(12, 3, 5)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(13, 3, 5)";
+            sql = "insert into card (id, level, nbPtPrestige) values(13, 3, 5)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(14, 3, 3)";
+            sql = "insert into card (id, level, nbPtPrestige) values(14, 3, 3)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(15, 3, 3)";
+            sql = "insert into card (id, level, nbPtPrestige) values(15, 3, 3)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(16, 3, 4)";
+            sql = "insert into card (id, level, nbPtPrestige) values(16, 3, 4)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(17, 3, 4)";
+            sql = "insert into card (id, level, nbPtPrestige) values(17, 3, 4)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(18, 3, 4)";
+            sql = "insert into card (id, level, nbPtPrestige) values(18, 3, 4)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(19, 3, 5)";
+            sql = "insert into card (id, level, nbPtPrestige) values(19, 3, 5)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(20, 3, 4)";
+            sql = "insert into card (id, level, nbPtPrestige) values(20, 3, 4)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(21, 3, 4)";
+            sql = "insert into card (id, level, nbPtPrestige) values(21, 3, 4)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(22, 3, 5)";
+            sql = "insert into card (id, level, nbPtPrestige) values(22, 3, 5)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(23, 3, 4)";
+            sql = "insert into card (id, level, nbPtPrestige) values(23, 3, 4)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(24, 3, 3)";
+            sql = "insert into card (id, level, nbPtPrestige) values(24, 3, 3)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(25, 3, 3)";
+            sql = "insert into card (id, level, nbPtPrestige) values(25, 3, 3)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(26, 3, 4)";
+            sql = "insert into card (id, level, nbPtPrestige) values(26, 3, 4)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(27, 3, 4)";
+            sql = "insert into card (id, level, nbPtPrestige) values(27, 3, 4)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(28, 3, 4)";
+            sql = "insert into card (id, level, nbPtPrestige) values(28, 3, 4)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(29, 3, 5)";
+            sql = "insert into card (id, level, nbPtPrestige) values(29, 3, 5)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(30, 3, 4)";
+            sql = "insert into card (id, level, nbPtPrestige) values(30, 3, 4)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(31, 3, 3)";
+            sql = "insert into card (id, level, nbPtPrestige) values(31, 3, 3)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(32, 2, 2)";
+            sql = "insert into card (id, level, nbPtPrestige) values(32, 2, 2)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(33, 2, 1)";
+            sql = "insert into card (id, level, nbPtPrestige) values(33, 2, 1)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(34, 2, 1)";
+            sql = "insert into card (id, level, nbPtPrestige) values(34, 2, 1)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(35, 2, 2)";
+            sql = "insert into card (id, level, nbPtPrestige) values(35, 2, 2)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(36, 2, 1)";
+            sql = "insert into card (id, level, nbPtPrestige) values(36, 2, 1)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(37, 2, 2)";
+            sql = "insert into card (id, level, nbPtPrestige) values(37, 2, 2)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(38, 2, 2)";
+            sql = "insert into card (id, level, nbPtPrestige) values(38, 2, 2)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(39, 2, 1)";
+            sql = "insert into card (id, level, nbPtPrestige) values(39, 2, 1)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(40, 2, 2)";
+            sql = "insert into card (id, level, nbPtPrestige) values(40, 2, 2)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(41, 2, 2)";
+            sql = "insert into card (id, level, nbPtPrestige) values(41, 2, 2)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(42, 2, 2)";
+            sql = "insert into card (id, level, nbPtPrestige) values(42, 2, 2)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(43, 2, 2)";
+            sql = "insert into card (id, level, nbPtPrestige) values(43, 2, 2)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(44, 2, 3)";
+            sql = "insert into card (id, level, nbPtPrestige) values(44, 2, 3)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(45, 2, 3)";
+            sql = "insert into card (id, level, nbPtPrestige) values(45, 2, 3)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(46, 2, 1)";
+            sql = "insert into card (id, level, nbPtPrestige) values(46, 2, 1)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(47, 2, 1)";
+            sql = "insert into card (id, level, nbPtPrestige) values(47, 2, 1)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(48, 2, 3)";
+            sql = "insert into card (id, level, nbPtPrestige) values(48, 2, 3)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(49, 2, 1)";
+            sql = "insert into card (id, level, nbPtPrestige) values(49, 2, 1)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(50, 2, 2)";
+            sql = "insert into card (id, level, nbPtPrestige) values(50, 2, 2)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(51, 2, 1)";
+            sql = "insert into card (id, level, nbPtPrestige) values(51, 2, 1)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(52, 2, 2)";
+            sql = "insert into card (id, level, nbPtPrestige) values(52, 2, 2)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(53, 2, 1)";
+            sql = "insert into card (id, level, nbPtPrestige) values(53, 2, 1)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(54, 2, 2)";
+            sql = "insert into card (id, level, nbPtPrestige) values(54, 2, 2)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(55, 2, 1)";
+            sql = "insert into card (id, level, nbPtPrestige) values(55, 2, 1)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(56, 2, 2)";
+            sql = "insert into card (id, level, nbPtPrestige) values(56, 2, 2)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(57, 2, 2)";
+            sql = "insert into card (id, level, nbPtPrestige) values(57, 2, 2)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(58, 2, 2)";
+            sql = "insert into card (id, level, nbPtPrestige) values(58, 2, 2)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(59, 2, 2)";
+            sql = "insert into card (id, level, nbPtPrestige) values(59, 2, 2)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(60, 2, 3)";
+            sql = "insert into card (id, level, nbPtPrestige) values(60, 2, 3)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(61, 2, 3)";
+            sql = "insert into card (id, level, nbPtPrestige) values(61, 2, 3)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(62, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(62, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(63, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(63, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(64, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(64, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(65, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(65, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(66, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(66, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(67, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(67, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(68, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(68, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(69, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(69, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(70, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(70, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(71, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(71, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(72, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(72, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(73, 1, 1)";
+            sql = "insert into card (id, level, nbPtPrestige) values(73, 1, 1)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(74, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(74, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(75, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(75, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(76, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(76, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(77, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(77, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(78, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(78, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(79, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(79, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(80, 1, 1)";
+            sql = "insert into card (id, level, nbPtPrestige) values(80, 1, 1)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(81, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(81, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(82, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(82, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(83, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(83, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(84, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(84, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(85, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(85, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(86, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(86, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(87, 1, 1)";
+            sql = "insert into card (id, level, nbPtPrestige) values(87, 1, 1)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(88, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(88, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(89, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(89, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(90, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(90, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(91, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(91, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(92, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(92, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(93, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(93, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(94, 1, 1)";
+            sql = "insert into card (id, level, nbPtPrestige) values(94, 1, 1)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(95, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(95, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(96, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(96, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(97, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(97, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(98, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(98, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(99, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(99, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(100, 1, 0)";
+            sql = "insert into card (id, level, nbPtPrestige) values(100, 1, 0)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
-            sql = "insert into card(id, level, nbPtPrestige) values(101, 1, 1)";
+            sql = "insert into card (id, level, nbPtPrestige) values(101, 1, 1)";
             command = new SQLiteCommand(sql, m_dbConnection);
             command.ExecuteNonQuery();
 
@@ -969,8 +1018,123 @@ namespace Splendor
             sql = "insert into cost (fkCard, fkRessource, nbRessource) values (499, 5, 2)"; command2 = new SQLiteCommand(sql, m_dbConnection); command2.ExecuteNonQuery();
             sql = "insert into cost (fkCard, fkRessource, nbRessource) values (500, 5, 1)"; command2 = new SQLiteCommand(sql, m_dbConnection); command2.ExecuteNonQuery();
             sql = "insert into cost (fkCard, fkRessource, nbRessource) values (501, 5, 0)"; command2 = new SQLiteCommand(sql, m_dbConnection); command2.ExecuteNonQuery();
-
         }
+
+        /// <summary>
+        /// Get the "Rubis" card's cost
+        /// </summary>
+        public int requestCostRubis(int idCard)
+        {
+            // Write Sql request
+            string sql = "select nbRessource from cost where fkRessource = 1 and fkCard = " + idCard;
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            int costRubis = 0;
+            while (reader.Read())
+            {
+                costRubis = Convert.ToInt32(reader["nbRessource"]);
+            }
+
+
+            return costRubis;
+        }
+
+        /// <summary>
+        /// Get the "Emeraude" card's cost
+        /// </summary>
+        public int requestCostEmeraude(int idCard)
+        {
+            idCard = idCard + 100;
+            // Write Sql request
+            string sql = "select nbRessource from cost where fkRessource = 2 and fkCard = " + idCard;
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            int costEmeraude = 0;
+            while (reader.Read())
+            {
+                costEmeraude = Convert.ToInt32(reader["nbRessource"]);
+            }
+
+            return costEmeraude;
+        }
+
+        /// <summary>
+        /// Get the "Onyx" card's cost
+        /// </summary>
+        public int requestCostOnyx(int idCard)
+        {
+            idCard = idCard + 200;
+            // Write Sql request
+            string sql = "select nbRessource from cost where fkRessource = 3 and fkCard = " + idCard;
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            int costOnyx = 0;
+            while (reader.Read())
+            {
+                costOnyx = Convert.ToInt32(reader["nbRessource"]);
+            }
+
+            return costOnyx;
+        }
+
+        /// <summary>
+        /// Get the "Saphir" card's cost
+        /// </summary>
+        public int requestCostSaphir(int idCard)
+        {
+            idCard = idCard + 300;
+
+            // Write Sql request
+            string sql = "select nbRessource from cost where fkRessource = 4 and fkCard = " + idCard;
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            int costSaphir = 0;
+            while (reader.Read())
+            {
+                costSaphir = Convert.ToInt32(reader["nbRessource"]);
+            }
+
+            return costSaphir;
+        }
+
+        /// <summary>
+        /// Get the "Diamand" card's cost
+        /// </summary>
+        public int requestCostDiamand(int idCard)
+        {
+            idCard = idCard + 400;
+
+            // Write Sql request
+            string sql = "select nbRessource from cost where fkRessource = 5 and fkCard = " + idCard;
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            int costDiamand = 0;
+            while (reader.Read())
+            {
+                costDiamand = Convert.ToInt32(reader["nbRessource"]);
+            }
+
+            return costDiamand;
+        }
+
+        /*/// <summary>
+        /// Get all the data of the Card table
+        /// </summary>
+        public string getCard()
+        {
+            // Write Sql request
+            string sql = "select * from card";
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            string allCard = Convert.ToString(reader);
+            return allCard;
+        }*/
 
         /// <summary>
         ///  create table "nbCoin" and insert data             
@@ -1032,5 +1196,43 @@ namespace Splendor
             command.ExecuteNonQuery();
         }
 
+        /// <summary>
+        /// Get the number of prestige point for one card nbPtPrestige
+        /// </summary>
+        public int nbPrestige(int idCard)
+        {
+            // Write Sql request
+            string sql = "select nbPtPrestige from card where id = " + idCard;
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            int prestige = 0;
+            while (reader.Read())
+            {
+                prestige = Convert.ToInt32(reader["nbPtPrestige"]);
+            }
+
+            return prestige;
+        }
+
+        /// <summary>
+        /// /Get the level of the card
+        /// </summary>
+        public int getLevel(int idCard)
+        {
+            // Write sql request
+            string sql = "select level from card where id =" + idCard;
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            // Write the result in cardLevel
+            int cardLevel = 0;
+            while (reader.Read())
+            {
+                cardLevel = Convert.ToInt32(reader["level"]);
+            }
+
+            return cardLevel;
+        }
     }
 }

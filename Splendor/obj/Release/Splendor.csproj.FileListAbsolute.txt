@@ -1,0 +1,14 @@
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\bin\Release\Splendor.exe.config
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\bin\Release\Splendor.exe
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\bin\Release\Splendor.pdb
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\bin\Release\System.Data.SQLite.dll
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\bin\Release\System.Data.SQLite.xml
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\bin\Release\System.Data.SQLite.dll.config
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\obj\Release\Splendor.csproj.ResolveComReference.cache
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\obj\Release\Splendor.frmSplendor.resources
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\obj\Release\Splendor.Properties.Resources.resources
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\obj\Release\Splendor.csproj.GenerateResource.cache
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\obj\Release\Splendor.csproj.CoreCompileInputs.cache
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\obj\Release\Splendor.csproj.CopyComplete
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\obj\Release\Splendor.exe
+P:\MA\MA24\Splendor\ProjetSplendor\Splendor\obj\Release\Splendor.pdb
