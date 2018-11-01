@@ -104,7 +104,7 @@ namespace Splendor
 
 
         /// <summary>
-        /// create the "player" table and insert data
+        /// Create the player table and filled it.
         /// </summary>
         private void CreateInsertPlayer()
         {
@@ -127,10 +127,10 @@ namespace Splendor
 
         
         /// <summary>
-        /// get the name of the player according to his id
+        /// Get the name of the player according to his id.
         /// </summary>
-        /// <param name="id">id of the player</param>
-        /// <returns></returns>
+        /// <param name="id">Id of the player, he is used to select the wanted player.</param>
+        /// <returns>The name of the player according to his id.</returns>
         public string GetPlayerName(int id)
         {
             string sql = "select pseudo from player where id = " + id;
@@ -145,7 +145,7 @@ namespace Splendor
         }
 
         /// <summary>
-        /// create the table "ressources" and insert data
+        /// Create the table "ressources" and fill it.
         /// </summary>
         private void CreateInsertRessources()
         {
@@ -190,7 +190,7 @@ namespace Splendor
         }*/
 
         /// <summary>
-        ///  create tables "cards", "cost" and insert data
+        ///  Create the tables "card", "costRubis", "costEmeraude", "costOnyx", "costSaphir" and "costDiamand", after that, the tables are filled.
         /// </summary>
         private void CreateInsertCards()
         { 
@@ -1020,8 +1020,10 @@ namespace Splendor
         }
 
         /// <summary>
-        /// Get the "Rubis" card's cost
+        /// Get the card's "Rubis" cost according to his id.
         /// </summary>
+        /// <param name="idCard">The id of the wanted card.</param>
+        /// <returns>The "Rubis" cost of the card.</returns>
         public int requestCostRubis(int idCard)
         {
             // Write Sql request
@@ -1040,8 +1042,10 @@ namespace Splendor
         }
 
         /// <summary>
-        /// Get the "Emeraude" card's cost
+        /// Get the card's "Emeraude" cost according to his id.
         /// </summary>
+        /// <param name="idCard">The id of the wanted card.</param>
+        /// <returns>The "Emeraude" cost of the card.</returns>
         public int requestCostEmeraude(int idCard)
         {
             idCard = idCard + 100;
@@ -1060,8 +1064,10 @@ namespace Splendor
         }
 
         /// <summary>
-        /// Get the "Onyx" card's cost
+        /// Get the card's "Onyx" cost according to his id.
         /// </summary>
+        /// <param name="idCard">The id of the wanted card.</param>
+        /// <returns>The "Onyx" cost of the card.</returns>
         public int requestCostOnyx(int idCard)
         {
             idCard = idCard + 200;
@@ -1080,8 +1086,10 @@ namespace Splendor
         }
 
         /// <summary>
-        /// Get the "Saphir" card's cost
+        /// Get the card's "Saphir" cots according to his id.
         /// </summary>
+        /// <param name="idCard">The id of the wanted card.</param>
+        /// <returns>The "Saphir" cost of the card.</returns>
         public int requestCostSaphir(int idCard)
         {
             idCard = idCard + 300;
@@ -1101,8 +1109,10 @@ namespace Splendor
         }
 
         /// <summary>
-        /// Get the "Diamand" card's cost
+        /// Get the card's "Diamand" cost according to his id.
         /// </summary>
+        /// <param name="idCard">The id of the wanted card.</param>
+        /// <returns>The "Diamand" cost of the card.</returns>
         public int requestCostDiamand(int idCard)
         {
             idCard = idCard + 400;
@@ -1136,7 +1146,7 @@ namespace Splendor
         }*/
 
         /// <summary>
-        ///  create table "nbCoin" and insert data             
+        ///  Create the table "NbCoin" and filled it.             
         /// </summary>
         private void CreateNbCoin()
         {
@@ -1196,8 +1206,10 @@ namespace Splendor
         }
 
         /// <summary>
-        /// Get the number of prestige point for one card nbPtPrestige
+        /// Get the number of prestige point for one card.
         /// </summary>
+        /// <param name="idCard">Id of the wanted card.</param>
+        /// <returns>The number of prestige point of the card.</returns>
         public int nbPrestige(int idCard)
         {
             // Write Sql request
@@ -1215,8 +1227,10 @@ namespace Splendor
         }
 
         /// <summary>
-        /// /Get the level of the card
+        /// Get the level of one card according to his id.
         /// </summary>
+        /// <param name="idCard">Id of the wanted card.</param>
+        /// <returns>The level of the card.</returns>
         public int getLevel(int idCard)
         {
             // Write sql request
