@@ -1,4 +1,13 @@
-﻿using System;
+﻿/**
+ * \file    ConnectionDB.cs
+ * \author  J. Voland, W. Hausmann
+ * \version 0.12
+ * \date    September 09. 2018
+ * \brief   Database.
+ * 
+ * \details This form create the database, the cards and the players with some requests.
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +18,6 @@ namespace Splendor
 {
     /// <summary>
     /// contains methods and attributes to connect and deal with the database
-    /// TO DO : le modèle de données n'est pas super, à revoir!!!!
     /// </summary>
     class ConnectionDB
     {
@@ -21,22 +29,22 @@ namespace Splendor
         /// </summary>
         public ConnectionDB()
         {
-            // Création de la BD (j'imagine ...)
+            // Création de la BD
             SQLiteConnection.CreateFile("Splendor.sqlite");
             
             // Instanciation de la connexion à la base de donnée
             m_dbConnection = new SQLiteConnection("Data Source=Splendor.sqlite;Version=3;");
-            // Ouverture de la BD (j'imagine ...)
+            // Ouverture de la BD
             m_dbConnection.Open();
 
-            //create and insert players VOIR EN DESSOUS
+            //create and insert players
             CreateInsertPlayer();
-            //Create and insert cards VOIR EN DESSOUS
+            //Create and insert cards
             // TO DO 50%
             CreateInsertCards();
-            //Create and insert ressources VOIR EN DESSOUS
+            //Create and insert ressources
             CreateInsertRessources();
-            // Create and insert nbCoin VOIR EN DESSOUS
+            // Create and insert nbCoin
             CreateNbCoin();
         }
 
@@ -1130,20 +1138,6 @@ namespace Splendor
 
             return costDiamand;
         }
-
-        /*/// <summary>
-        /// Get all the data of the Card table
-        /// </summary>
-        public string getCard()
-        {
-            // Write Sql request
-            string sql = "select * from card";
-            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
-            SQLiteDataReader reader = command.ExecuteReader();
-
-            string allCard = Convert.ToString(reader);
-            return allCard;
-        }*/
 
         /// <summary>
         ///  Create the table "NbCoin" and filled it.             

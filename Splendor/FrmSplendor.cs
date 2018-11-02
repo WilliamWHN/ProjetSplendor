@@ -130,6 +130,7 @@ namespace Splendor
             txtLevel11.Click += ClickOnCard;
         }
 
+
         private void ClickOnCard(object sender, EventArgs e)
         {
             //We get the value on the card and we split it to get all the values we need (number of prestige points and ressource)
@@ -224,7 +225,7 @@ namespace Splendor
                 {
                     enableClicLabel = false;                  
                 }
-                ///On test ici les combinaisons  disponibles avec Rubis
+                // We test the different combinations with the Rubis
                 else if(nbRubis == 1 && nbSaphir == 1)
                 {
                     enableClicOnRubis = false;
@@ -245,7 +246,7 @@ namespace Splendor
                     enableClicOnRubis = false;
                     enableClicOnOnyx = false;
                 }
-                //On test ici les combinaisons disponibles avec Saphir
+                // We test the different combinations with the Saphir
                 else if (nbSaphir == 1 && nbDiamand == 1)
                 {
                     enableClicOnSaphir = false;
@@ -261,7 +262,7 @@ namespace Splendor
                     enableClicOnSaphir = false;
                     enableClicOnOnyx = false;
                 }
-                //On test ici les combinaisons  disponibles avec Diamand
+                // We test the different combinations with the Diamand
                 else if (nbDiamand == 1 && nbEmeraude == 1)
                 {
                     enableClicOnDiamand = false;
@@ -272,7 +273,7 @@ namespace Splendor
                     enableClicOnRubis = false;
                     enableClicOnOnyx = false;
                 }
-                //On test ici les combinaisons  disponibles avec Emeraude
+                // We test the different combinations with the Emeraude
                 else if (nbEmeraude == 1 && nbOnyx == 1)
                 {
                     enableClicOnEmeraude = false;
@@ -441,6 +442,11 @@ namespace Splendor
             
         }
 
+        /// <summary>
+        /// click on to give to the player a Rubis
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lblChoiceRubis_Click(object sender, EventArgs e)
         {
             if (nbRubis == 1)
@@ -453,6 +459,11 @@ namespace Splendor
             lblChoiceRubis.Text = nbRubis + "\r\n";           
         }
 
+        /// <summary>
+        /// click on to give to the player a Saphir
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lblChoiceSaphir_Click(object sender, EventArgs e)
         {
             if (nbSaphir == 1)
@@ -465,6 +476,11 @@ namespace Splendor
             lblChoiceSaphir.Text = nbSaphir + "\r\n";
         }
 
+        /// <summary>
+        /// click on to give to player an Onyx
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lblChoiceOnyx_Click(object sender, EventArgs e)
         {
             if (nbOnyx == 1)
@@ -477,6 +493,11 @@ namespace Splendor
             lblChoiceOnyx.Text = nbOnyx + "\r\n";
         }
 
+        /// <summary>
+        /// click on to give to the player an Emeraude
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lblChoiceEmeraude_Click(object sender, EventArgs e)
         {
             if (nbEmeraude == 1)
@@ -489,6 +510,11 @@ namespace Splendor
             lblChoiceEmeraude.Text = nbEmeraude + "\r\n";
         }
 
+        /// <summary>
+        /// click on to give to the player a Diamand
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lblChoiceDiamand_Click(object sender, EventArgs e)
         {
             if (nbDiamand == 1)
