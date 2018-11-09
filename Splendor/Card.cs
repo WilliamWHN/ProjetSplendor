@@ -50,6 +50,9 @@ namespace Splendor
 
         }
 
+        /// <summary>
+        /// identifier of the card
+        /// </summary>
         public int IdCard
         {
             get
@@ -96,7 +99,7 @@ namespace Splendor
         /// <summary>
         /// displays information about the card
         /// </summary>
-        /// <returns></returns>
+        /// <returns>the ressource of that the card gives</returns>
         public override string ToString()
         {
             string res = "";

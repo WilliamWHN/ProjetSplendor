@@ -1,4 +1,13 @@
-﻿using System;
+﻿/**
+ * \file    ConnectionDB.cs
+ * \author  J. Voland, W. Hausmann
+ * \version 0.12
+ * \date    September 09. 2018
+ * \brief   Database.
+ * 
+ * \details This form create the database, the cards and the players with some requests.
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +18,6 @@ namespace Splendor
 {
     /// <summary>
     /// contains methods and attributes to connect and deal with the database
-    /// TO DO : le modèle de données n'est pas super, à revoir!!!!
     /// </summary>
     class ConnectionDB
     {
@@ -21,23 +29,22 @@ namespace Splendor
         /// </summary>
         public ConnectionDB()
         {
-            // Création de la BD (j'imagine ...)
+            // Création de la BD
             SQLiteConnection.CreateFile("Splendor.sqlite");
 
             // Instanciation de la connexion à la base de donnée
             m_dbConnection = new SQLiteConnection("Data Source=Splendor.sqlite;Version=3;");
 
-            // Ouverture de la BD (j'imagine ...)        
+            // Ouverture de la BD      
             m_dbConnection.Open();
 
             //Create Table player
             CreateTablePlayer();
-            //Create and insert cards VOIR EN DESSOUS
-            // TO DO 50%
+            //Create and insert cards
             CreateInsertCards();
-            //Create and insert ressources VOIR EN DESSOUS
+            //Create and insert ressources
             CreateInsertRessources();
-            // Create and insert nbCoin VOIR EN DESSOUS
+            // Create and insert nbCoin
             CreateNbCoin();
         }
 
@@ -112,7 +119,7 @@ namespace Splendor
         }
 
         /// <summary>
-        /// insert data in payer table
+        /// insert data in player table
         /// </summary>
         public string CreateInsertPlayer(string name)
         {
@@ -125,10 +132,10 @@ namespace Splendor
         }
 
         /// <summary>
-        /// get the name of the player according to his id
+        /// Get the name of the player according to his id.
         /// </summary>
-        /// <param name="id">id of the player</param>
-        /// <returns></returns>
+        /// <param name="id">Id of the player, he is used to select the wanted player.</param>
+        /// <returns>The name of the player according to his id.</returns>
         public string GetPlayerName(int id)
         {
             string sql = "select pseudo from player where id = " + id;
@@ -188,7 +195,7 @@ namespace Splendor
         }*/
 
         /// <summary>
-        ///  create tables "cards", "cost" and insert data
+        ///  create the tables "cards", "cost" and insert data
         /// </summary>
         private void CreateInsertCards()
         {
@@ -836,9 +843,10 @@ namespace Splendor
         }
 
         /// <summary>
-        /// Get the "Rubis" card's cost
+        /// Get the card's "Rubis" cost according to his id.
         /// </summary>
-        /// 
+        /// <param name="idCard">The id of the wanted card.</param>
+        /// <returns>The "Rubis" cost of the card.</returns>
         public int requestCostRubis(int fkResc, int id)
         {
             // Write Sql request
@@ -856,6 +864,11 @@ namespace Splendor
             return cost;
         }
 
+        /// <summary>
+        /// Get the card's "Emeraude" cost according to his id.
+        /// </summary>
+        /// <param name="idCard">The id of the wanted card.</param>
+        /// <returns>The "Emeraude" cost of the card.</returns>
         public int requestCostEmeraude(int fkResc, int id)
         {
             // Write Sql request
@@ -873,6 +886,11 @@ namespace Splendor
             return cost;
         }
 
+        /// <summary>
+        /// Get the card's "Onyx" cost according to his id.
+        /// </summary>
+        /// <param name="idCard">The id of the wanted card.</param>
+        /// <returns>The "Onyx" cost of the card.</returns>
         public int requestCostOnyx(int fkResc, int id)
         {
             // Write Sql request
@@ -890,6 +908,11 @@ namespace Splendor
             return cost;
         }
 
+        /// <summary>
+        /// Get the card's "Saphir" cots according to his id.
+        /// </summary>
+        /// <param name="idCard">The id of the wanted card.</param>
+        /// <returns>The "Saphir" cost of the card.</returns>
         public int requestCostSaphir(int fkResc, int id)
         {
             // Write Sql request
@@ -906,6 +929,11 @@ namespace Splendor
             return cost;
         }
 
+        /// <summary>
+        /// Get the card's "Diamand" cost according to his id.
+        /// </summary>
+        /// <param name="idCard">The id of the wanted card.</param>
+        /// <returns>The "Diamand" cost of the card.</returns>
         public int requestCostDiamand(int fkResc, int id)
         {
             // Write Sql request
@@ -999,11 +1027,7 @@ namespace Splendor
             }
 
             return costDiamand;
-        }
-
-        /*/// <summary>
-        /// Get all the data of the Card table
-        /// </summary>*/
+        }*/
 
         /// <summary>
         ///  create table "nbCoin" and insert data             
@@ -1083,10 +1107,6 @@ namespace Splendor
             }
 
             return prestige;
-        }*/
-
-        /// <summary>
-        /// /Get the level of the card
-        /// </summary>       
+        }*/      
     }
 }
