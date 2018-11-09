@@ -70,6 +70,7 @@ namespace Splendor
             InitializeComponent();
         }
 
+        
         /// <summary>
         /// loads the form and initialize data in it
         /// </summary>
@@ -78,9 +79,7 @@ namespace Splendor
         private void frmSplendor_Load(object sender, EventArgs e)
         {
             
-
-            lblGoldCoin.Text = "5";
-
+            lblGoldCoin.Text = "5";   
             lblDiamandCoin.Text = NbDiamandAvailable + "";
             lblEmeraudeCoin.Text = NbEmeraudeAvailable + "" ;
             lblOnyxCoin.Text = NbOnyxAvailable + "";
@@ -90,29 +89,33 @@ namespace Splendor
             conn = new ConnectionDB();
 
             //load cards from the database
+            Stack<Card> stackLvl1 = conn.GetListCardAccordingToLevel(1);
+            Stack<Card> stackLvl2 = conn.GetListCardAccordingToLevel(2);
+            Stack<Card> stackLvl3 = conn.GetListCardAccordingToLevel(3);
+            Stack<Card> stackLvl4 = conn.GetListCardAccordingToLevel(4);
             //they are not hard coded any more
             //TO DO
+            foreach (Control ctrl in flwCardLevel1.Controls)
+            {
+                ctrl.Text = stackLvl1.Pop().ToString();
+            }
+            foreach (Control ctrl in flwCardLevel2.Controls)
+            {
+                ctrl.Text = stackLvl2.Pop().ToString();
+            }
+            foreach (Control ctrl in flwCardLevel3.Controls)
+            {
+                ctrl.Text = stackLvl3.Pop().ToString();
+            }
+            foreach (Control ctrl in flwCardNoble.Controls)
+            {
+                ctrl.Text = stackLvl4.Pop().ToString();
+            }
 
-            Card card11 = new Card();
-            card11.Level = 1;
-            card11.PrestigePt = 1;
-            card11.Cout = new int[] { 1, 0, 2, 0, 2 };
-            card11.Ress = Ressources.Rubis;
 
-            Card card12 = new Card();
-            card12.Level = 1;
-            card12.PrestigePt = 0;
-            card12.Cout = new int[] { 0, 1, 2, 1, 0 };
-            card12.Ress = Ressources.Saphir;
-
-            txtLevel11.Text = card11.ToString();
-            txtLevel12.Text = card12.ToString();
-
-            //load cards from the database
-            Stack<Card> listCardOne = conn.GetListCardAccordingToLevel(1);
             //Go through the results
             //Don't forget to check when you are at the end of the stack
-            
+
             //fin TO DO
 
             this.Width = 680;
@@ -134,7 +137,7 @@ namespace Splendor
 
             //we wire the click on all cards to the same event
             //TO DO for all cards
-            txtLevel11.Click += ClickOnCard;
+            txtLevel13.Click += ClickOnCard;
         }
 
         private void ClickOnCard(object sender, EventArgs e)

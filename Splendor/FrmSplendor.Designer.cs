@@ -42,10 +42,10 @@
             this.txtLevel22 = new System.Windows.Forms.TextBox();
             this.txtLevel23 = new System.Windows.Forms.TextBox();
             this.txtLevel24 = new System.Windows.Forms.TextBox();
-            this.txtLevel11 = new System.Windows.Forms.TextBox();
-            this.txtLevel12 = new System.Windows.Forms.TextBox();
             this.txtLevel13 = new System.Windows.Forms.TextBox();
             this.txtLevel14 = new System.Windows.Forms.TextBox();
+            this.txtLevel12 = new System.Windows.Forms.TextBox();
+            this.txtLevel11 = new System.Windows.Forms.TextBox();
             this.cmdInsertPlayer = new System.Windows.Forms.Button();
             this.cmdPlay = new System.Windows.Forms.Button();
             this.txtPlayerEmeraudeCard = new System.Windows.Forms.TextBox();
@@ -233,42 +233,42 @@
             this.txtLevel24.Size = new System.Drawing.Size(102, 98);
             this.txtLevel24.TabIndex = 13;
             // 
-            // txtLevel11
-            // 
-            this.txtLevel11.BackColor = System.Drawing.SystemColors.Window;
-            this.txtLevel11.Location = new System.Drawing.Point(108, 2);
-            this.txtLevel11.Margin = new System.Windows.Forms.Padding(2);
-            this.txtLevel11.Multiline = true;
-            this.txtLevel11.Name = "txtLevel11";
-            this.txtLevel11.Size = new System.Drawing.Size(102, 98);
-            this.txtLevel11.TabIndex = 14;
-            // 
-            // txtLevel12
-            // 
-            this.txtLevel12.Location = new System.Drawing.Point(2, 2);
-            this.txtLevel12.Margin = new System.Windows.Forms.Padding(2);
-            this.txtLevel12.Multiline = true;
-            this.txtLevel12.Name = "txtLevel12";
-            this.txtLevel12.Size = new System.Drawing.Size(102, 98);
-            this.txtLevel12.TabIndex = 15;
-            // 
             // txtLevel13
             // 
-            this.txtLevel13.Location = new System.Drawing.Point(214, 2);
+            this.txtLevel13.BackColor = System.Drawing.SystemColors.Window;
+            this.txtLevel13.Location = new System.Drawing.Point(108, 2);
             this.txtLevel13.Margin = new System.Windows.Forms.Padding(2);
             this.txtLevel13.Multiline = true;
             this.txtLevel13.Name = "txtLevel13";
             this.txtLevel13.Size = new System.Drawing.Size(102, 98);
-            this.txtLevel13.TabIndex = 16;
+            this.txtLevel13.TabIndex = 14;
             // 
             // txtLevel14
             // 
-            this.txtLevel14.Location = new System.Drawing.Point(320, 2);
+            this.txtLevel14.Location = new System.Drawing.Point(2, 2);
             this.txtLevel14.Margin = new System.Windows.Forms.Padding(2);
             this.txtLevel14.Multiline = true;
             this.txtLevel14.Name = "txtLevel14";
             this.txtLevel14.Size = new System.Drawing.Size(102, 98);
-            this.txtLevel14.TabIndex = 17;
+            this.txtLevel14.TabIndex = 15;
+            // 
+            // txtLevel12
+            // 
+            this.txtLevel12.Location = new System.Drawing.Point(214, 2);
+            this.txtLevel12.Margin = new System.Windows.Forms.Padding(2);
+            this.txtLevel12.Multiline = true;
+            this.txtLevel12.Name = "txtLevel12";
+            this.txtLevel12.Size = new System.Drawing.Size(102, 98);
+            this.txtLevel12.TabIndex = 16;
+            // 
+            // txtLevel11
+            // 
+            this.txtLevel11.Location = new System.Drawing.Point(320, 2);
+            this.txtLevel11.Margin = new System.Windows.Forms.Padding(2);
+            this.txtLevel11.Multiline = true;
+            this.txtLevel11.Name = "txtLevel11";
+            this.txtLevel11.Size = new System.Drawing.Size(102, 98);
+            this.txtLevel11.TabIndex = 17;
             // 
             // cmdInsertPlayer
             // 
@@ -577,10 +577,10 @@
             // 
             // flwCardLevel1
             // 
+            this.flwCardLevel1.Controls.Add(this.txtLevel14);
+            this.flwCardLevel1.Controls.Add(this.txtLevel13);
             this.flwCardLevel1.Controls.Add(this.txtLevel12);
             this.flwCardLevel1.Controls.Add(this.txtLevel11);
-            this.flwCardLevel1.Controls.Add(this.txtLevel13);
-            this.flwCardLevel1.Controls.Add(this.txtLevel14);
             this.flwCardLevel1.Location = new System.Drawing.Point(14, 374);
             this.flwCardLevel1.Margin = new System.Windows.Forms.Padding(2);
             this.flwCardLevel1.Name = "flwCardLevel1";
@@ -695,10 +695,10 @@
         private System.Windows.Forms.TextBox txtLevel22;
         private System.Windows.Forms.TextBox txtLevel23;
         private System.Windows.Forms.TextBox txtLevel24;
-        private System.Windows.Forms.TextBox txtLevel11;
-        private System.Windows.Forms.TextBox txtLevel12;
         private System.Windows.Forms.TextBox txtLevel13;
         private System.Windows.Forms.TextBox txtLevel14;
+        private System.Windows.Forms.TextBox txtLevel12;
+        private System.Windows.Forms.TextBox txtLevel11;
         private System.Windows.Forms.Button cmdInsertPlayer;
         private System.Windows.Forms.Button cmdPlay;
         private System.Windows.Forms.TextBox txtPlayerEmeraudeCard;
