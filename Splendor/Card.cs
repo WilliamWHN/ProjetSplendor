@@ -14,6 +14,7 @@ namespace Splendor
         private Ressources ress;
         private int prestigePt;
         private int level;
+        private int idCard;
         //tableau : l'index correspond à l'énumération, la valeur à la ressource requise
         private int[] cout = new int[4];
 
@@ -45,6 +46,19 @@ namespace Splendor
             set
             {
                 prestigePt = value;
+            }
+
+        }
+
+        public int IdCard
+        {
+            get
+            {
+                return idCard;
+            }
+            set
+            {
+                idCard = value;
             }
 
         }
@@ -89,7 +103,7 @@ namespace Splendor
             
             res = Enum.GetName(typeof(Ressources), Ress);
             //Be careful, those \t enables to split the string when clicking on a card
-            res += "\t";
+            res += " ";
 
             if (prestigePt != 0)
             {
@@ -106,7 +120,7 @@ namespace Splendor
 
                 if (i != 0)
                 {
-                    ressource = "    ";
+                    ressource = " ";
                     ressource += Enum.GetName(typeof(Ressources), boucle) + " ";
                     ressource += i + "\r\n";
                 }

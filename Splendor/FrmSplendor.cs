@@ -37,6 +37,12 @@ namespace Splendor
         private string NewPlayerName;
         private int NbTotalCoins;
 
+        //used to count how much player we have insert
+        private int lastInsertedId = 0;
+
+        //used to store the different players(object)
+        List<Player> listOfPlayers = new List<Player>();
+
         //used to store the number of coins there is on table
         private int NbDiamandAvailable = 7;
         private int NbEmeraudeAvailable = 7;
@@ -45,7 +51,7 @@ namespace Splendor
         private int NbSaphirAvailable = 7;
 
         //id of the player that is playing
-        private int currentPlayerId;
+        private int currentPlayerId = 1;
         //boolean to enable us to know if the user can click on a coin or a card
         private bool enableClicLabel = false;
         private bool enableClicOnRubis = false;
@@ -64,6 +70,7 @@ namespace Splendor
             InitializeComponent();
         }
 
+        
         /// <summary>
         /// loads the form and initialize data in it
         /// </summary>
@@ -72,9 +79,7 @@ namespace Splendor
         private void frmSplendor_Load(object sender, EventArgs e)
         {
             
-
-            lblGoldCoin.Text = "5";
-
+            lblGoldCoin.Text = "5";   
             lblDiamandCoin.Text = NbDiamandAvailable + "";
             lblEmeraudeCoin.Text = NbEmeraudeAvailable + "" ;
             lblOnyxCoin.Text = NbOnyxAvailable + "";
@@ -84,29 +89,33 @@ namespace Splendor
             conn = new ConnectionDB();
 
             //load cards from the database
+            Stack<Card> stackLvl1 = conn.GetListCardAccordingToLevel(1);
+            Stack<Card> stackLvl2 = conn.GetListCardAccordingToLevel(2);
+            Stack<Card> stackLvl3 = conn.GetListCardAccordingToLevel(3);
+            Stack<Card> stackLvl4 = conn.GetListCardAccordingToLevel(4);
             //they are not hard coded any more
             //TO DO
+            foreach (Control ctrl in flwCardLevel1.Controls)
+            {
+                ctrl.Text = stackLvl1.Pop().ToString();
+            }
+            foreach (Control ctrl in flwCardLevel2.Controls)
+            {
+                ctrl.Text = stackLvl2.Pop().ToString();
+            }
+            foreach (Control ctrl in flwCardLevel3.Controls)
+            {
+                ctrl.Text = stackLvl3.Pop().ToString();
+            }
+            foreach (Control ctrl in flwCardNoble.Controls)
+            {
+                ctrl.Text = stackLvl4.Pop().ToString();
+            }
 
-            Card card11 = new Card();
-            card11.Level = 1;
-            card11.PrestigePt = 1;
-            card11.Cout = new int[] { 1, 0, 2, 0, 2 };
-            card11.Ress = Ressources.Rubis;
 
-            Card card12 = new Card();
-            card12.Level = 1;
-            card12.PrestigePt = 0;
-            card12.Cout = new int[] { 0, 1, 2, 1, 0 };
-            card12.Ress = Ressources.Saphir;
-
-            txtLevel11.Text = card11.ToString();
-            txtLevel12.Text = card12.ToString();
-
-            //load cards from the database
-            Stack<Card> listCardOne = conn.GetListCardAccordingToLevel(1);
             //Go through the results
             //Don't forget to check when you are at the end of the stack
-            
+
             //fin TO DO
 
             this.Width = 680;
@@ -124,12 +133,12 @@ namespace Splendor
             lblChoiceEmeraude.Visible = false;
             cmdValidateChoice.Visible = false;
             cmdNextPlayer.Visible = false;
+            cmdPlay.Visible = false;
 
             //we wire the click on all cards to the same event
             //TO DO for all cards
-            txtLevel11.Click += ClickOnCard;
+            txtLevel13.Click += ClickOnCard;
         }
-
 
         private void ClickOnCard(object sender, EventArgs e)
         {
@@ -146,21 +155,47 @@ namespace Splendor
         private void cmdPlay_Click(object sender, EventArgs e)
         {
             this.Width = 680;
-            this.Height = 780;      
-            int id = 0;
-           
-            LoadPlayer(id);
+            this.Height = 780;
+
+            CreatePlayers(lastInsertedId);
+            LoadPlayer(currentPlayerId);
 
         }
 
 
+        private void CreatePlayers(int lastInsertedId)
+        {            
+            Player player;           
+            int i;
+
+            for (i = 1; i <= lastInsertedId; i++) {
+                string name = conn.GetPlayerName(i);
+                player = new Player()
+                {
+                    Name = name,
+                    Id = i,
+                    Ressources = new int[] { 0, 0, 0, 0, 0},
+                    Coins = new int[] { 0, 0, 0, 0, 0}
+                };
+                listOfPlayers.Add(player);
+            }
+        }
+
+        private void AddCoinsToPlayer(int id)
+        {           
+            listOfPlayers[id -1].Coins.SetValue(listOfPlayers[id -1].Coins[0] + nbRubis, 0);
+            listOfPlayers[id -1].Coins.SetValue(listOfPlayers[id -1].Coins[1] + nbSaphir, 1);
+            listOfPlayers[id -1].Coins.SetValue(listOfPlayers[id -1].Coins[2] + nbOnyx, 2);
+            listOfPlayers[id -1].Coins.SetValue(listOfPlayers[id -1].Coins[3] + nbEmeraude, 3);     
+            listOfPlayers[id -1].Coins.SetValue(listOfPlayers[id -1].Coins[4] + nbDiamand, 4);
+        }
         /// <summary>
         /// load data about the current player
         /// </summary>
         /// <param name="id">identifier of the player</param>
-        private void LoadPlayer(int id) { 
+        private void LoadPlayer(int id) {
 
-            string name = conn.GetPlayerName(currentPlayerId);
+            string name = listOfPlayers[id - 1].Name;
 
             //no coins or card selected yet, labels are empty
             lblChoiceDiamand.Text = "";
@@ -178,11 +213,6 @@ namespace Splendor
             nbSaphir = 0;
             nbEmeraude = 0;
 
-            Player player = new Player();
-            player.Name = name;
-            player.Id = id;
-            player.Ressources = new int[] { 2, 0, 1, 1, 1 };
-            player.Coins = new int[] { 0, 1, 0, 1, 1 };
 
             //Put visible the coins
             lblDiamandCoin.Visible = true;
@@ -191,16 +221,16 @@ namespace Splendor
             lblSaphirCoin.Visible = true;
             lblRubisCoin.Visible = true;
 
-            lblPlayerDiamandCoin.Text = player.Coins[0].ToString();
-            lblPlayerOnyxCoin.Text = player.Coins[1].ToString();
-            lblPlayerRubisCoin.Text = player.Coins[2].ToString();
-            lblPlayerSaphirCoin.Text = player.Coins[3].ToString();
-            lblPlayerEmeraudeCoin.Text = player.Coins[4].ToString();
-            currentPlayerId = id;
+            lblPlayerRubisCoin.Text = listOfPlayers[id - 1].Coins[0].ToString();
+            lblPlayerSaphirCoin.Text = listOfPlayers[id - 1].Coins[1].ToString();
+            lblPlayerOnyxCoin.Text = listOfPlayers[id - 1].Coins[2].ToString();
+            lblPlayerEmeraudeCoin.Text = listOfPlayers[id - 1].Coins[3].ToString();
+            lblPlayerDiamandCoin.Text = listOfPlayers[id - 1].Coins[4].ToString();
 
             lblPlayer.Text = "Jeu de " + name;
 
             cmdPlay.Enabled = false;
+            cmdNextPlayer.Enabled = false;
             cmdInsertPlayer.Enabled = false;
         }
 
@@ -225,7 +255,7 @@ namespace Splendor
                 {
                     enableClicLabel = false;                  
                 }
-                // We test the different combinations with the Rubis
+                ///On test ici les combinaisons  disponibles avec Rubis
                 else if(nbRubis == 1 && nbSaphir == 1)
                 {
                     enableClicOnRubis = false;
@@ -246,7 +276,7 @@ namespace Splendor
                     enableClicOnRubis = false;
                     enableClicOnOnyx = false;
                 }
-                // We test the different combinations with the Saphir
+                //On test ici les combinaisons disponibles avec Saphir
                 else if (nbSaphir == 1 && nbDiamand == 1)
                 {
                     enableClicOnSaphir = false;
@@ -262,7 +292,7 @@ namespace Splendor
                     enableClicOnSaphir = false;
                     enableClicOnOnyx = false;
                 }
-                // We test the different combinations with the Diamand
+                //On test ici les combinaisons  disponibles avec Diamand
                 else if (nbDiamand == 1 && nbEmeraude == 1)
                 {
                     enableClicOnDiamand = false;
@@ -273,7 +303,7 @@ namespace Splendor
                     enableClicOnRubis = false;
                     enableClicOnOnyx = false;
                 }
-                // We test the different combinations with the Emeraude
+                //On test ici les combinaisons  disponibles avec Emeraude
                 else if (nbEmeraude == 1 && nbOnyx == 1)
                 {
                     enableClicOnEmeraude = false;
@@ -412,9 +442,9 @@ namespace Splendor
         /// <param name="e"></param>
         private void cmdValidateChoice_Click(object sender, EventArgs e)
         {
-            cmdNextPlayer.Visible = true;
+            cmdValidateChoice.Visible = false;
+            cmdNextPlayer.Visible = true;           
             //TO DO Check if card or coins are selected, impossible to do both at the same time
-            
             cmdNextPlayer.Enabled = true;
         }
 
@@ -425,7 +455,21 @@ namespace Splendor
         /// <param name="e"></param>
         private void cmdInsertPlayer_Click(object sender, EventArgs e)
         {
-            NewPlayerName = Interaction.InputBox("Veuiller entrer le nom du joueur", "Entrer un joueur", "prénom", 500, 500);     
+            lastInsertedId++;
+            //If the last player is the fourth disable the button
+            if(lastInsertedId == 4){
+                cmdInsertPlayer.Visible = false;
+            }
+            //If the last player inserted is the second display the play button
+            else if (lastInsertedId == 2){           
+                cmdPlay.Visible = true;
+            }
+            do
+            {
+                NewPlayerName = Interaction.InputBox("Veuiller entrer le nom du joueur ", "Entrer un joueur", "prénom", 500, 500);
+            } while ((NewPlayerName == "") || (NewPlayerName == "prénom"));
+            conn.CreateInsertPlayer(NewPlayerName);
+
         }
         
         /// <summary>
@@ -435,18 +479,24 @@ namespace Splendor
         /// <param name="e"></param>
         private void cmdNextPlayer_Click(object sender, EventArgs e)
         {
-            //TO DO in release 1.0 : 3 is hard coded (number of players for the game), it shouldn't. 
-            //TO DO Get the id of the player : in release 0.1 there are only 3 players
+            AddCoinsToPlayer(currentPlayerId);
+            //get the next player Id and check if it's the last player of the turn
+            if (currentPlayerId == lastInsertedId)
+            {
+                currentPlayerId = 1;
+            }
+            else if(currentPlayerId < lastInsertedId)
+            {
+                currentPlayerId++;
+            }           
             //Reload the data of the player
+            LoadPlayer(currentPlayerId);
             //We are not allowed to click on the next button
+           
+            
             
         }
 
-        /// <summary>
-        /// click on to give to the player a Rubis
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void lblChoiceRubis_Click(object sender, EventArgs e)
         {
             if (nbRubis == 1)
@@ -459,11 +509,6 @@ namespace Splendor
             lblChoiceRubis.Text = nbRubis + "\r\n";           
         }
 
-        /// <summary>
-        /// click on to give to the player a Saphir
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void lblChoiceSaphir_Click(object sender, EventArgs e)
         {
             if (nbSaphir == 1)
@@ -476,11 +521,6 @@ namespace Splendor
             lblChoiceSaphir.Text = nbSaphir + "\r\n";
         }
 
-        /// <summary>
-        /// click on to give to player an Onyx
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void lblChoiceOnyx_Click(object sender, EventArgs e)
         {
             if (nbOnyx == 1)
@@ -493,11 +533,6 @@ namespace Splendor
             lblChoiceOnyx.Text = nbOnyx + "\r\n";
         }
 
-        /// <summary>
-        /// click on to give to the player an Emeraude
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void lblChoiceEmeraude_Click(object sender, EventArgs e)
         {
             if (nbEmeraude == 1)
@@ -510,11 +545,6 @@ namespace Splendor
             lblChoiceEmeraude.Text = nbEmeraude + "\r\n";
         }
 
-        /// <summary>
-        /// click on to give to the player a Diamand
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void lblChoiceDiamand_Click(object sender, EventArgs e)
         {
             if (nbDiamand == 1)
