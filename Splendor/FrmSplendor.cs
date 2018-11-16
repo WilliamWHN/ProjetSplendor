@@ -24,7 +24,7 @@ using System.Windows.Forms;
 namespace Splendor
 {
     /// <summary>
-    /// manages the form that enables to play with the Splendor
+    /// class frmSplendor : manages the form that enables to play with the Splendor
     /// </summary>
     public partial class frmSplendor : Form
     {

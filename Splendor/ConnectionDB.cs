@@ -17,7 +17,7 @@ using System.Data.SQLite;
 namespace Splendor
 {
     /// <summary>
-    /// contains methods and attributes to connect and deal with the database
+    /// class ConnexionDB : contains methods and attributes to connect and deal with the database
     /// </summary>
     class ConnectionDB
     {
