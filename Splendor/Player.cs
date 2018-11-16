@@ -14,6 +14,7 @@ namespace Splendor
     {
         private string name;
         private int id;
+        private int prestigepts;
         private int[] ressources;
         private int[] coins;
 
@@ -29,6 +30,21 @@ namespace Splendor
             set
             {
                 name = value;
+            }
+        }
+
+        /// <summary>
+        /// all the precious stones he has
+        /// </summary>
+        public int PrestigePts
+        {
+            get
+            {
+                return prestigepts;
+            }
+            set
+            {
+                prestigepts = value;
             }
         }
 

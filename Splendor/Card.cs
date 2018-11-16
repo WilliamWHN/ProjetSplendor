@@ -99,11 +99,11 @@ namespace Splendor
         /// <returns></returns>
         public override string ToString()
         {
-            string res = "";
+            string res = "|";
             
-            res = Enum.GetName(typeof(Ressources), Ress);
+            res += Enum.GetName(typeof(Ressources), Ress);
             //Be careful, those \t enables to split the string when clicking on a card
-            res += " ";
+            res += "\t";
 
             if (prestigePt != 0)
             {
